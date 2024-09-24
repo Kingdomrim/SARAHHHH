@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Letter</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8e1e1;
+            color: #333;
+            padding: 20px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            overflow: hidden; /* Prevent scrolling */
+        }
+
+        .letter {
+            border: 5px solid #ff6f61;
+            border-radius: 10px;
+            padding: 20px;
+            max-width: 600px;
+            opacity: 1;
+            transition: opacity 0.5s ease;
+        }
+
+        h1 {
+            color: #ff6f61;
+            margin: 0;
+        }
+
+        p {
+            font-size: 1.2em;
+            line-height: 1.5;
+        }
+
+        .button {
+            display: none; /* Initially hidden */
+            margin-top: 20px;
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+        }
+
+        /* Frame styles */
+        .frame {
+            display: none; /* Initially hidden */
+            border: 10px solid #ff6f61;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            background-color: white;
+            position: absolute;
+            animation: dvdBounce 4s infinite alternate; /* DVD bounce animation */
+            width: 200px; /* Set a width for the frame */
+            height: 100px; /* Set a height for the frame */
+        }
+
+        /* Heart trail styles */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAIAAAD9G8jaAAAAAXNSR0IArs4c6QAAABxpRE9UAAAAJ0xBISy8DCAcYKTcABAAAAAElFTkSuQmCC') no-repeat center center;
+            background-size: contain;
+            opacity: 0; /* Initially hidden */
+            animation: float 2s linear infinite; /* Floating animation */
+        }
+
+        /* Keyframes for the DVD bouncing animation */
+        @keyframes dvdBounce {
+            0% { transform: translate(0, 0); }
+            25% { transform: translate(calc(100vw - 220px), 0); } /* Move right */
+            50% { transform: translate(calc(100vw - 220px), calc(100vh - 120px)); } /* Move down */
+            75% { transform: translate(0, calc(100vh - 120px)); } /* Move left */
+            100% { transform: translate(0, 0); } /* Move up */
+        }
+
+        /* Keyframes for the heart float animation */
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+                opacity: 1; /* Fade in */
+            }
+            50% {
+                transform: translateY(-30px);
+                opacity: 0.5; /* Fade out */
+            }
+            100% {
+                transform: translateY(0);
+                opacity: 0; /* Fade out */
+            }
+        }
+
+        /* Final message styles */
+        .final-message {
+            display: none; /* Initially hidden */
+            font-size: 3em;
+            color: #ff6f61;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="letter" id="loveLetter">
+        <h1>Heyyy Sarrrrr</h1>
+        <p>
+            I am like missing u rn(EEEE I LOVE U SO MUCH). It's september 24th 11:38PM I am literally here writing u a love letter.
+            OMGGG remember our promise That we would never stop caring about each other I just wanted to tell you that I am never ever gonna stop
+            taking care and loving you. Everytime, when your mom calls during our "Secret hangout time" I always get very very sadd. OMGG I actually
+            like hanging out with youu. Andd calling with you tooo. I also enjoy when we sleep call and watching movies togetherrr. We did so many stuff togetherrr.
+            AND GUESSS WHATTT  MY BIGGEST DREAM RN IS TO TRAVEL WITH YOUUU AND LIVING WITH YOUUU. Just imagine that when we travel with each other, we can like 
+            make out whenever we want and we can likee stay in the hotel for the entire day and likeee we just talk. I actually don't know what else to say
+            anymoreee:(
+        </p>
+        <p>
+            This was a veryyy short letter but I will make moreee in the futureee.
+            You are my heart, my sarr, and my everything. Thank you for being youuu.
+        </p>
+        <p class="signature">
+            With all my love,<br>
+            Andy Xie
+        </p>
+    </div>
+
+    <button class="button" id="showButton">Click here kiddo;)</button>
+
+    <div class="frame" id="loveFrame">
+        <h1 style="margin: 0;">I coded this code for
+            2 days
+            
+        </h1>
+    </div>
+
+    <div class="final-message" id="finalMessage">
+        SOOOOO CAN WE HANGOUT THIS WEEKEND?
+    </div>
+
+    <script>
+        // Show the button after 4 seconds
+        setTimeout(() => {
+            document.getElementById('showButton').style.display = 'block';
+        }, 4000);
+
+        // Show the frame and hearts when the button is clicked
+        document.getElementById('showButton').addEventListener('click', () => {
+            document.getElementById('loveLetter').style.opacity = '0'; // Fade out letter
+            document.getElementById('showButton').style.display = 'none'; // Hide button
+            document.getElementById('loveFrame').style.display = 'block'; // Show frame
+
+            // Create heart trails
+            for (let i = 0; i < 10; i++) {
+                let heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.top = `${Math.random() * 100}vh`;
+                heart.style.animationDelay = `${Math.random() * 2}s`; // Random delay
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 4000); // Remove heart after animation
+            }
+
+            // Transition to final message after 20 seconds
+            setTimeout(() => {
+                document.getElementById('loveFrame').style.display = 'none'; // Hide frame
+                document.getElementById('finalMessage').style.display = 'block'; // Show final message
+            }, 20000);
+        });
+    </script>
+
+</body>
+</html>
